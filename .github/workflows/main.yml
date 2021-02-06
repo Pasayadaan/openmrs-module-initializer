@@ -25,7 +25,7 @@ jobs:
       - name: Current Working Directory
         run: |
           pwd
-          cd /home/runner/work/openmrs-module-initializer
+          cd /home/runner/work/openmrs-module-initializer/openmrs-module-initializer
           
       - name: Build but skip tests
         run: mvn clean package
