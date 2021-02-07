@@ -21,29 +21,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8 
-
-      - name: Build dependencies
-        run: sudo -s
-      - uses: actions/checkout@master
-        
-      - name: Current Working Directory
-        run: |
-          pwd
-          cd /home/runner/work/openmrs-module-initializer
-          ls -l /home/runner/work/openmrs-module-initializer/openmrs-module-initializer
           
-      - name: Build but skip tests
-        run: mvn clean package
+      - name: Build initializer
+        run: mvn clean package -P validator
+      - uses: actions/checkout@master
                 
-      - name: Get version
-        run: |
-          VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
-          echo "::set-output name=version::$VERSION"
-        id: get_version
-        
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@master
         with:
           name: bahmnicore-omod-0.92-SNAPSHOT
-          path: ./validator/target/initializer-validator-2.1.0-SNAPSHOT.jar
+          path: ./validator/target/*.jar
           retention-days: 5
