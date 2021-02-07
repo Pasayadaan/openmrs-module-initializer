@@ -23,7 +23,7 @@ jobs:
           java-version: 1.8 
 
       - name: Build dependencies
-        run: sudo 
+        run: sudo -s
       - uses: actions/checkout@master
         
       - name: Current Working Directory
