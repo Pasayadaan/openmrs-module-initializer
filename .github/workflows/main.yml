@@ -21,14 +21,16 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8 
-          
+
+      - name: Checkout master
+        uses: actions/checkout@master
+                  
       - name: Build initializer
         run: mvn clean package
-      - uses: actions/checkout@master
                 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@master
         with:
-          name: bahmnicore-omod-0.92-SNAPSHOT
-          path: ./validator/target/*.*
+          name: initializer jar
+          path: ./omod/target/*.jar
           retention-days: 5
