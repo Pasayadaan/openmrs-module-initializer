@@ -23,7 +23,7 @@ jobs:
           java-version: 1.8 
           
       - name: Build initializer
-        run: mvn clean package -P validator
+        run: mvn clean package -P ./validator
       - uses: actions/checkout@master
                 
       - name: 'Upload Artifact'
