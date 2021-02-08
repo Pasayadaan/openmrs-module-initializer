@@ -26,11 +26,11 @@ jobs:
         uses: actions/checkout@master
                   
       - name: Build initializer
-        run: mvn clean package -P validator
+        run: mvn clean package
                 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@master
         with:
           name: initializer jar
-          path: ./validator/target/initializer-validator-2.1.0-SNAPSHOT.jar
+          path: ./omod/target/*.omod
           retention-days: 5
